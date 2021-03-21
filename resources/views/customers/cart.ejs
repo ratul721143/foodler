@@ -1,0 +1,53 @@
+<section class="cart">
+    <% if(session.cart){ %>
+    <div class="cart__payment__section">
+        <div class="cart__payment__div">
+            <div class="order__summary my-4">
+                <img class="mx-3" src="Images/cart-black.png" alt="cart img">
+                <h5>Order summary</h5>
+            </div>
+
+            <% for(let menu of Object.values(session.cart.items)){ %>
+
+            <div class="cart__item__div my-3">
+                <div class="item__details">
+                    <img src="Images/<%= menu.item.image %>" alt="img error">
+                    <p style="text-align: end;"><%= menu.item.name %></p>
+                </div>
+                    <h6 class="quantity"><%= menu.qty %>pcs</h6>
+                    <h6 class="price">$<%=menu.item.price * menu.qty %> /-</h6>
+            </div>
+
+            <% } %>
+
+            <div class="place__order__section">
+                <div class="total__amount my-2">
+                    <p>Total Amount: <span>$<%= session.cart.totalPrice %> /- </span></p>
+                </div>
+                <form class="cart__form" action="" method="post">
+                    <input type="text" max placeholder="Phone number"/>
+                    <input type="text" placeholder="Address"/>
+                    <div class="submit__cart__form__div">
+                       <button type="submit">order now</button>
+                    </div>
+                    
+                </form>
+               <!-- <a href="#">Login Now</a> -->
+            </div>
+        </div>
+    </div>
+
+    <% } else { %>
+
+    <div class="empty__cart__section">
+        <div class="empty__cart">
+            <h3 class="my-3">Empty Cart! 😥</h3>
+            <p class="text-center">Nothing inside your cart<br/> .Please add csomething to order</p>
+            <img class="my-4" src="Images/empty-cart.png" alt="empty cart pic">
+            <a href="/#menuItems">Order Something</a>
+            
+        </div>
+    </div>
+
+    <% } %>
+</section>

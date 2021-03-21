@@ -1,0 +1,17 @@
+<section class="login__section">
+    
+    <div class="login__div">
+        <h2>Login Page</h2>
+        <form class="login__div__form" action="/login" method="POST">
+            <% if(messages.error) { %>
+                <span style="color:crimson"><%= messages.error %></span>
+            <% } %>
+            <input name="email" class="input__box" type="email" placeholder="Email" required/>
+            <input name="password" class="input__box" type="password" placeholder="Password" required/>
+            <div class="submit__login__form">
+                <button class="submit__button" type="submit">Login Now</button>
+                <a class="login__a" href="/register">Don't have account?</a>
+            </div>
+        </form>
+    </div>
+</section>

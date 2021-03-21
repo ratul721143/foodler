@@ -1,0 +1,25 @@
+<section class="login__section">
+    
+    <div class="login__div">
+        <h2>Register</h2>
+        <form action="/register" method="POST"  class="login__div__form">
+
+            <% if(messages.error) { %>
+                <span style="color:crimson"><%= messages.error %></span>
+            <% } %>
+            <input name="username" value="<%= messages.username %>" class="input__box" type="text" placeholder="Username"/>
+            
+            <% if(messages.invalidemail) { %>
+                <span style="color:crimson"><%= messages.invalidemail %></span>
+            <% } %>
+            <input name="email" value="<%= messages.email %>" class="input__box" type="email" placeholder="Email" required/>
+            <input name="password" class="input__box" type="password" placeholder="Password" required/>
+            <!-- <input class="input__box" type="password" placeholder="confirmed Password" required/> -->
+            
+            <div class="submit__login__form">
+                <button class="submit__button" type="submit">Register</button>
+                <a class="login__a" href="/login">Already have an account?</a>
+            </div>
+        </form>
+    </div>
+</section>

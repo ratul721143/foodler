@@ -5,14 +5,33 @@
   "main": "action.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve":"node server.js",
-    "dev": "nodemon server.js"
+    "serve": "node server.js",
+    "dev": "nodemon server.js",
+    "mixer": "npx mix watch"
   },
   "author": "Ratul Maity",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
+    "bcrypt": "^5.0.1",
+    "connect-mongo": "^4.4.0",
+    "dotenv": "^8.2.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
-    "express-ejs-layouts": "^2.5.0"
+    "express-ejs-layouts": "^2.5.0",
+    "express-flash": "0.0.2",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.12.1",
+    "node-fetch": "^2.6.1",
+    "noty-img": "^3.2.0-img",
+    "noty-noty": "0.0.6",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "toastr": "^2.1.4",
+    "vanilla-tilt": "^1.7.0"
+  },
+  "devDependencies": {
+    "laravel-mix": "^6.0.13",
+    "postcss": "^8.1.14"
   }
 }
