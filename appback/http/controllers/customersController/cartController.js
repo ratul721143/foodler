@@ -1,3 +1,5 @@
+const { session } = require("passport");
+
 function cartController(){
     //factory function - a function that return object
     return{
@@ -18,7 +20,7 @@ function cartController(){
 
 
             // for the first time creating cart and adding basic object structure
-            if(!req.session.cart){
+            if(!req.session.cart ){ 
                 req.session.cart = {
                     items:{},
                     totalQty:0,
@@ -42,6 +44,31 @@ function cartController(){
                     cart.totalPrice = cart.totalPrice + req.body.price;
                 }
            return res.json({totalQty:req.session.cart.totalQty})
+        },
+        increaseQty(req,res){
+            console.log(req.body);
+            let cart = req.session.cart;
+            
+            if(cart.items[req.body.item._id].qty < 10){
+                cart.items[req.body.item._id].qty = cart.items[req.body.item._id].qty + 1;
+                cart.totalQty = cart.totalQty +1 ;
+                cart.totalPrice = cart.totalPrice + req.body.item.price;
+                console.log(cart.items[req.body.item._id].qty);
+            }
+            return res.json({totalQty:req.session.cart.totalQty});
+        },
+        decreaseQty(req,res){
+            console.log(req.body);
+            let cart = req.session.cart;
+            console.log(cart);
+            if(cart.items[req.body.item._id].qty){
+                cart.items[req.body.item._id].qty = cart.items[req.body.item._id].qty - 1;
+                cart.totalQty = cart.totalQty -1 ;
+                if(cart.totalPrice)cart.totalPrice = cart.totalPrice - req.body.item.price;
+            }
+            
+            console.log(cart.items[req.body.item._id].qty);
+            return res.json({totalQty:req.session.cart.totalQty});
         }
     }
 

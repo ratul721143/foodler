@@ -1,0 +1,50 @@
+<section
+  class="customers__order__section d-flex justify-content-center"
+  style="overflow-x: scroll"
+>
+  <div class="container pt-3" style="width: 80%">
+    <h1>Your Orders History</h1>
+    <% if(messages.success){ %>
+    <div
+      id="success-alert"
+      class="bg-success rounded-top px-3 pt-1"
+      style="color: white"
+      role="alert"
+    >
+      <p><i class="fas fa-check-double"></i> &nbsp; <%= messages.success %></p>
+    </div>
+    <% } %>
+    <table class="table table-striped" style="margin-left: -10px; width: 100%">
+      <thead>
+        <tr>
+          <th scope="col">Order Id</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Address</th>
+          <th scope="col">Time</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(orders.length){ %> <% orders.forEach(order=>{ %>
+        <tr>
+          <td>
+            <a style="text-decoration: none; color: orangered" href="#"
+              ><%= order._id %></a
+            >
+          </td>
+          <td><%= order.phone %></td>
+          <td><%= order.address %></td>
+          <td><%=moment(order.createdAt).format('hh:mm A') %></td>
+          <td><%=moment(order.createdAt).format('DD/MM/YYYY') %></td>
+        </tr>
+        <% }) %> <% } else{ %>
+        <tr>
+          <td>
+            <span>No Orders found!</span>
+          </td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</section>

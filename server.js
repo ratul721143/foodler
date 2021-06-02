@@ -17,7 +17,9 @@ const passport = require('passport');
 
 
 //Database connection
-const url = 'mongodb://localhost/foodlerdb';
+// const url = 'mongodb://localhost/foodlerdb';
+
+const url = process.env.MONGO_ATLAS_URL;
 mongoose.connect(url, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: true });
 
 const connection = mongoose.connection;

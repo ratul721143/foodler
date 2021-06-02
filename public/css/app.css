@@ -326,6 +326,18 @@ body {
   transition: 1s;
 }
 
+.login__toAdd {
+  text-decoration: none;
+  font-size: 20px;
+  color: orange;
+}
+.login__toAdd:hover {
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  transition: 1s;
+}
+
 /* end of food menu section */
 
 /* social media section  */
@@ -459,7 +471,9 @@ body {
 /* end of footer section */
 
 /*cart page css ========================================================= */
-.cart {
+.cart,
+.customers__order__section,
+.feedback__page__section {
   min-height: calc(100vh - 80px);
   background-color: rgba(226, 223, 223, 0.5);
 }
@@ -476,6 +490,15 @@ body {
 }
 .empty__cart img {
   width: 40%;
+}
+
+.plusminusbutton {
+  width: 30px;
+  font-size: 20px;
+  margin: 0 5px;
+  border: none;
+  background: #e0e0e0;
+  box-shadow: 5px 5px 5px #bcbcbc, -5px -1px 5px #ffffff;
 }
 
 .empty__cart a {
@@ -545,6 +568,7 @@ body {
 .quantity {
   color: grey;
 }
+
 .price {
   color: orangered;
   font-weight: 600;
@@ -554,6 +578,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  margin-bottom: 30px;
 }
 
 .total__amount p {

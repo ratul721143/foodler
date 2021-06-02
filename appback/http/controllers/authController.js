@@ -33,7 +33,8 @@ function authController(){
             })(req,res,next)
         },
         logout(req,res){
-            req.logout()
+            req.logout();
+            
             return res.redirect('/');
         },
 
@@ -86,18 +87,19 @@ function authController(){
                 password:hashedPassword
             })
 
+            //store data in the database
             user.save().then((user)=>{
                 //registration completed
                 //Login automatically
                 console.log(user);
-                return res.redirect('/');
+                return res.redirect('/login');
             }).catch(err=>{
                 console.log(err);
                 req.flash('error','Something went wrong!');
                 return res.redirect('/register');
             })
 
-            //store data in the database
+            
         }
         
     }

@@ -1,0 +1,47 @@
+<section class="feedback__page__section" style="display: flex; justify-content: center;">
+    <div class="" style="width:80%; margin-top:80px">
+        <h1>Customers feedback</h1>
+        
+        <table class="table table-striped " style="margin-left: -10px; width:100%">
+            <thead>
+                <tr>
+                  <th scope="col">Customer's Name</th>
+                  <th scope="col">Food Name</th>
+                  <th scope="col">ratings</th>
+                  <th scope="col">Review</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                  <% if(feedbacks.length){ %>
+                    <% feedbacks.forEach(feedback=>{ %>
+                        <tr>
+                            <td style="color:green;font-weight: 600;"><%= feedback.name %></td>
+                            <td style="color:crimson;font-weight: 600;"><%= feedback.foodName %></td>
+                            <td >
+                                <% for(let i = 1 ; i < feedback.ratings ; i++ ){  %>
+                                <span class="fa fa-star" style="color:rgb(31, 104, 31);"></span>
+                                <% } %>
+                            </td>
+                            <td  style="color:rgb(83, 82, 82);font-weight: 600;">
+                                <% if(feedback.review) { %>
+                                    <%= feedback.review %>
+                                <% } else{ %>
+                                    Not Given
+                                <% } %>
+                            </td>
+                            
+                          </tr>
+                   <% }) %>
+               
+                <% } else{ %>
+                    <tr>
+                        <a href="/#feedback__section" class="btn btn-primary">No Feedback found! Give A feedback as a first user</a>
+                    </tr>
+                               
+                <% } %>
+              </tbody>
+        </table>
+
+    </div>
+</section>
