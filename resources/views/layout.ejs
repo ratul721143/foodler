@@ -19,8 +19,22 @@
       integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
+    />
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js" integrity="sha512-SttpKhJqONuBVxbRcuH0wezjuX+BoFoli0yPsnrAADcHsQMW8rkR84ItFHGIkPvhnlRnE2FaifDOUw+EltbuHg==" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="/css/app.css" />
+    <link rel="stylesheet" href="/css/homeheader.css" />
+    <link rel="stylesheet" href="/css/customerstatus.css" />
+    <link rel="stylesheet" href="/css/cart.css" />
+    <link rel="stylesheet" href="/css/feedback.css" />
+    <link rel="stylesheet" href="/css/auth.css" />
+    <link rel="stylesheet" href="/css/foodmenu.css" />
+    <link rel="stylesheet" href="/css/socialmedia.css" />
+    <link rel="stylesheet" href="/css/booktablesection.css" />
+    <link rel="stylesheet" href="/css/about.css" />
+    <link rel="stylesheet" href="/css/orders.css" />
   </head>
   <body>
     <!-- navbar  -->
@@ -32,9 +46,12 @@
       <div class="main__nav__right">
         <ul>
           <li><a class="navber__link" href="/">Home</a></li>
-          <li><a class="navber__link" href="#about">About</a></li>
-          <% if(user){ %>
+          <li><a class="navber__link" href="/feedback">Feedbacks</a></li>
+          <% if(user){ %> <% if(user.role === 'admin'){ %>
+          <li><a class="navber__link" href="/admin/orders">Orders</a></li>
+          <% }else{ %>
           <li><a class="navber__link" href="/customers/orders">Orders</a></li>
+          <% } %>
           <li>
             <form id="logout" action="/logout" method="POST">
               <a

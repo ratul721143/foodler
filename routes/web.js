@@ -4,6 +4,7 @@ const cartController = require('../appback/http/controllers/customersController/
 const orderController = require('../appback/http/controllers/customersController/orderController')
 const feedbackController = require('../appback/http/controllers/feedbackController');
 const AdminOrdersController = require('../appback/http/controllers/adminController/AdminOrdersController');
+const AdminOrdersStatusController = require('../appback/http/controllers/adminController/AdminOrdersStatusController');
 
 
 const guest = require('../appback/http/middleware/guest');
@@ -30,6 +31,7 @@ app.post('/decrease-qty',cartController().decreaseQty)
 //customer routes
 app.post('/orders',auth,orderController().store)
 app.get('/customers/orders',auth,orderController().index);
+app.get('/customers/orders/:id',auth,orderController().orderStatus);
 
 //feedback route
 app.get('/feedback',feedbackController().feedback)
@@ -37,6 +39,7 @@ app.post('/feedback',feedbackController().postfeedback)
 
 //admin routes
 app.get('/admin/orders',admin,AdminOrdersController().index);
+app.post('/admin/orders/status',admin,AdminOrdersStatusController().updateStatus);
 
 
 }

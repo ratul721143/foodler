@@ -8,18 +8,20 @@ function feedbackController(){
             return res.render('feedback',{feedbacks:feedbacks});
         },
         postfeedback(req,res){
-            const {name , foodName , ratings , review} = req.body;
-            // console.log(req.body);
+            const {foodName , ratings , review} = req.body;
+            console.log(req.user);
+
+            // const userdata=req.user;
 
            const feedback= new Feedback({
-               name,
+               name:req.user.username,
                foodName,
                ratings,
                review
            })
 
            feedback.save().then(feedback=>{
-               console.log()
+            
                return res.redirect('/feedback');
            }).catch(err=>{
                req.flash('error','something went wrong');

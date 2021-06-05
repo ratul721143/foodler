@@ -1,0 +1,35 @@
+<section
+  class="customers__order__section d-flex justify-content-center"
+  style="overflow-x: scroll"
+>
+  <input
+    id="hidden__input"
+    type="hidden"
+    value="<%= JSON.stringify(order) %>"
+  />
+  <div class="container pt-3 main__tracker__div">
+    <div class="track__div__header">
+      <h2>Track Your Order</h2>
+      <p><%= order._id %></p>
+    </div>
+    <div class="track__body">
+      <ul>
+        <li class="status__list" data-status="order_placed">
+          <span>Order Placed</span>
+        </li>
+        <li class="status__list" data-status="prepared">
+          <span>Items Prepared</span>
+        </li>
+        <li class="status__list" data-status="packed">
+          <span>Items Packed</span>
+        </li>
+        <li class="status__list" data-status="outforDelevery">
+          <span>Out for Delivery</span>
+        </li>
+        <li class="status__list" data-status="completed">
+          <span>Completed</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

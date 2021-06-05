@@ -9,6 +9,7 @@ const ordersSchema=new Schema({
         required:true
     },
     items: {type: Object , required:true },
+    totalPrice:{type:String},
     phone: { type:String, required:true},
     address:{type:String,required:true},
     payment:{type:String,default:'COD'},

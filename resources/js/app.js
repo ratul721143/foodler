@@ -2,6 +2,7 @@
 import axios from 'axios'
 import Noty from 'noty-noty'
 import initAdminorders from './initAdminorders';
+import moment from 'moment'
 
 let addToCart = document.querySelectorAll('.addcart__button');
 let cartCounter = document.querySelector('#cartCounter');
@@ -96,3 +97,50 @@ decreaseMenuItem.forEach(btn=>{
 })
 
 initAdminorders();
+
+
+//change order status
+let hiddenInput = document.querySelector('#hidden__input');
+
+let order = hiddenInput ? hiddenInput.value : null ; 
+
+order = JSON.parse(order);
+
+let Statustime = document.createElement('small');
+
+let listElements = document.querySelectorAll('.status__list');
+
+function changeOrderStatus(order){
+    let status_completed = true;
+
+    listElements.forEach((eachList)=>{
+        let listStatus = eachList.dataset.status;
+        if(status_completed){
+            eachList.classList.add('status__completed');
+        }
+        if(listStatus === order.status){
+            Statustime.innerText = moment(order.updatedAt).format('hh:mm A');
+            eachList.appendChild(Statustime);
+
+            status_completed = false;
+            if(eachList.nextElementSibling){
+                eachList.nextElementSibling.classList.add('current__status');
+            }
+        }
+    })
+}
+
+changeOrderStatus(order);
+
+
+
+let trackerbutton = document.querySelectorAll('.tracking__button__a');
+
+trackerbutton.forEach((button)=>{
+    if(button.innerText === 'Done'){
+        button.classList.add('done');
+    }
+    else{
+        button.classList.add('process');
+    }
+})

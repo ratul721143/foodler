@@ -1871,7 +1871,7 @@ function renderOrderDetails(items) {
 
 function generateTableBody(orders) {
   return orders.map(function (order) {
-    return "<tr>\n        <td>\n         <p>".concat(order._id, "</p>\n         <div>").concat(renderOrderDetails(order.items), "</div>\n        </td>\n        <td >").concat(order.customerId.username, "</td>\n        <td >").concat(order.phone, "</td>\n        <td >").concat(order.address, "</td>\n        <td>\n            <form action=\"/customer/status\" method=\"POST\">\n                <select style=\"background-color:rgb(123,125,125);color:white\" onChange=\"this.form.submit()\">\n                    <option value=\"placed\" ").concat(order.status === 'order_placed' ? 'selected' : '', ">placed</option>\n                    <option value=\"prepared\" ").concat(order.status === 'prepared' ? 'selected' : '', ">prepared</option>\n                    <option value=\"packed\" ").concat(order.status === 'packed' ? 'selected' : '', ">packed</option>\n                    <option value=\"outforDelivery\" ").concat(order.status === 'outforDelevery' ? 'selected' : '', ">outforDelivery</option>\n                    <option value=\"completed\" ").concat(order.status === 'completed' ? 'selected' : '', ">completed</option>\n                </select>\n            </form>\n        </td>\n        <td>").concat(moment(order.createdAt).format('hh:mm A'), "</td>\n        <td>").concat(moment(order.createdAt).format('DD/MM/YYYY'), "</td>\n      </tr>");
+    return "<tr>\n        <td>\n         <p class=\"admin_ordersid\">".concat(order._id, "</p>\n         <div>").concat(renderOrderDetails(order.items), "</div>\n         <p><strong>Total Bill = <span class=\"total_bill_span\">$").concat(order.totalPrice, "</span></strong></p>\n        </td>\n        <td >").concat(order.customerId.username, "</td>\n        <td >").concat(order.phone, "</td>\n        <td >").concat(order.address, "</td>\n        <td>\n            <form action=\"/admin/orders/status\" method=\"post\">\n                <input type=\"hidden\" name=\"orderId\" value=\"").concat(order._id, "\">\n                <select name=\"status\" style=\"background-color:rgb(123,125,125);color:white\" onChange=\"this.form.submit()\">\n                    <option value=\"placed\" ").concat(order.status === 'order_placed' ? 'selected' : '', ">placed</option>\n                    <option value=\"prepared\" ").concat(order.status === 'prepared' ? 'selected' : '', ">prepared</option>\n                    <option value=\"packed\" ").concat(order.status === 'packed' ? 'selected' : '', ">packed</option>\n                    <option value=\"outforDelivery\" ").concat(order.status === 'outforDelevery' ? 'selected' : '', ">outforDelivery</option>\n                    <option value=\"completed\" ").concat(order.status === 'completed' ? 'selected' : '', ">completed</option>\n                </select>\n            </form>\n        </td>\n        <td>").concat(moment(order.createdAt).format('hh:mm A'), "</td>\n        <td>").concat(moment(order.createdAt).format('DD/MM/YYYY'), "</td>\n      </tr>");
   }).join('');
 }
 
@@ -29719,6 +29719,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var noty_noty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! noty-noty */ "./node_modules/noty-noty/dist/index.js");
 /* harmony import */ var _initAdminorders__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./initAdminorders */ "./resources/js/initAdminorders.js");
 /* harmony import */ var _initAdminorders__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_initAdminorders__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -29797,7 +29800,44 @@ decreaseMenuItem.forEach(function (btn) {
     decreaseQty(menu);
   });
 });
-_initAdminorders__WEBPACK_IMPORTED_MODULE_2___default()();
+_initAdminorders__WEBPACK_IMPORTED_MODULE_2___default()(); //change order status
+
+var hiddenInput = document.querySelector('#hidden__input');
+var order = hiddenInput ? hiddenInput.value : null;
+order = JSON.parse(order);
+var Statustime = document.createElement('small');
+var listElements = document.querySelectorAll('.status__list');
+
+function changeOrderStatus(order) {
+  var status_completed = true;
+  listElements.forEach(function (eachList) {
+    var listStatus = eachList.dataset.status;
+
+    if (status_completed) {
+      eachList.classList.add('status__completed');
+    }
+
+    if (listStatus === order.status) {
+      Statustime.innerText = moment__WEBPACK_IMPORTED_MODULE_3___default()(order.updatedAt).format('hh:mm A');
+      eachList.appendChild(Statustime);
+      status_completed = false;
+
+      if (eachList.nextElementSibling) {
+        eachList.nextElementSibling.classList.add('current__status');
+      }
+    }
+  });
+}
+
+changeOrderStatus(order);
+var trackerbutton = document.querySelectorAll('.tracking__button__a');
+trackerbutton.forEach(function (button) {
+  if (button.innerText === 'Done') {
+    button.classList.add('done');
+  } else {
+    button.classList.add('process');
+  }
+});
 })();
 
 /******/ })()

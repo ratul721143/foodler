@@ -1,0 +1,69 @@
+/* feedback section */
+.feedback__section {
+  margin: 20px 20px;
+}
+
+.feedback__div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feedback__form {
+  margin-top: 20px;
+  width: 60%;
+  margin-bottom: 100px;
+}
+
+.input__box {
+  width: 100%;
+  margin: 10px 0px;
+}
+
+.input__box > input,
+.input__box > textarea {
+  border-radius: 5px;
+  border: 1px solid grey;
+  padding: 5px 15px;
+  width: 100%;
+}
+.input__box > .input__select {
+  border-radius: 5px;
+  border: 1px solid grey;
+  padding: 5px 15px;
+  width: 100%;
+}
+.input__select option {
+  border-bottom: 1px solid grey;
+}
+
+.input__box > input:focus,
+.input__box > .input__select:focus,
+.input__box > textarea:focus {
+  outline: none;
+  border: 2px solid orange;
+  font-weight: 700;
+  background-color: rgba(165, 250, 165, 0.3);
+}
+
+.feedback__submit__button__div {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.feedback__submit__button {
+  background-color: orange;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  color: white;
+  margin-right: 10px;
+  animation: sliding 3s linear alternate-reverse infinite;
+}
+.feedback__submit__button:hover {
+  background-color: transparent;
+  border: 2px solid orange;
+  color: orange;
+}
+
+/* end of feedback section */

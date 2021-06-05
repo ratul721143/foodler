@@ -22,13 +22,17 @@
           <th scope="col">Address</th>
           <th scope="col">Time</th>
           <th scope="col">Date</th>
+          <th scope="col">Tracker</th>
         </tr>
       </thead>
       <tbody>
         <% if(orders.length){ %> <% orders.forEach(order=>{ %>
         <tr>
           <td>
-            <a style="text-decoration: none; color: orangered" href="#"
+            <a
+              class="order__id__a"
+              style="text-decoration: none; color: orangered"
+              href="/customers/orders/<%= order._id %>"
               ><%= order._id %></a
             >
           </td>
@@ -36,6 +40,14 @@
           <td><%= order.address %></td>
           <td><%=moment(order.createdAt).format('hh:mm A') %></td>
           <td><%=moment(order.createdAt).format('DD/MM/YYYY') %></td>
+          <td>
+            <a
+              class="tracking__button__a"
+              role="button"
+              href="/customers/orders/<%= order._id %>"
+              ><%= (order.status === 'completed' ? 'Done' : 'Process') %></a
+            >
+          </td>
         </tr>
         <% }) %> <% } else{ %>
         <tr>

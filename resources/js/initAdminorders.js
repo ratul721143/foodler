@@ -34,15 +34,17 @@ function generateTableBody(orders){
     return orders.map(order=>{
         return `<tr>
         <td>
-         <p>${order._id}</p>
+         <p class="admin_ordersid">${order._id}</p>
          <div>${renderOrderDetails(order.items)}</div>
+         <p><strong>Total Bill = <span class="total_bill_span">$${order.totalPrice}</span></strong></p>
         </td>
         <td >${order.customerId.username }</td>
         <td >${ order.phone}</td>
         <td >${ order.address}</td>
         <td>
-            <form action="/customer/status" method="POST">
-                <select style="background-color:rgb(123,125,125);color:white" onChange="this.form.submit()">
+            <form action="/admin/orders/status" method="post">
+                <input type="hidden" name="orderId" value="${order._id}">
+                <select name="status" style="background-color:rgb(123,125,125);color:white" onChange="this.form.submit()">
                     <option value="placed" ${order.status === 'order_placed'? 'selected' : '' }>placed</option>
                     <option value="prepared" ${order.status === 'prepared'? 'selected' : '' }>prepared</option>
                     <option value="packed" ${order.status === 'packed'? 'selected' : '' }>packed</option>

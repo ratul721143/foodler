@@ -1,0 +1,49 @@
+/*Login and register page ========================================================= */
+
+.login__section {
+  min-height: calc(100vh - 80px);
+  background-color: rgba(116, 113, 113, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login__div {
+  width: 300px;
+}
+
+.login__div__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input__box {
+  border-radius: 5px;
+  border: none;
+  padding: 5px 10px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.input__box:focus {
+  outline: none;
+  border: 1px solid orange;
+}
+
+.submit__login__form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login__a {
+  font-size: 18px;
+  text-decoration: none;
+  color: orangered;
+}
+
+.login__a:hover {
+  color: orange;
+}
+
+/* end of login and register page======================================= */

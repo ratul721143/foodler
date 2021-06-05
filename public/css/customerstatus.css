@@ -1,0 +1,126 @@
+.main__tracker__div {
+  margin-top: 50px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.track__div__header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.track__div__header > p {
+  color: green;
+  background-color: white;
+  border-radius: 20px;
+  padding: 5px 10px;
+  box-shadow: inset 0px -1px 2px black;
+}
+
+.track__body {
+  margin-left: 50px;
+}
+
+.track__body ul li {
+  list-style: none;
+  font-size: 20px;
+  height: 100px;
+  position: relative;
+}
+
+.track__body ul li:after {
+  content: "";
+  position: absolute;
+  top: 65%;
+  left: -7px;
+  transform: translateY(-50%);
+  height: 80px;
+  width: 5px;
+  background-color: black;
+  border-radius: 5px;
+}
+
+.track__body ul li:last-child::after {
+  visibility: hidden;
+}
+
+.track__body ul li span {
+  position: relative;
+  padding-left: 20px;
+  font-weight: 600;
+}
+
+.track__body ul li span:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: black;
+}
+
+/* &#xf46c; */
+
+.track__body ul li:before {
+  font-size: 40px;
+  font-weight: 600;
+  font-family: "Line Awesome Free";
+  position: absolute;
+  top: 10px;
+  left: -60px;
+  transform: translateY(-50%);
+}
+
+.track__body ul li:nth-child(1)::before {
+  content: "\f46c";
+}
+
+.track__body ul li:nth-child(2)::before {
+  content: "\f562";
+}
+
+.track__body ul li:nth-child(3)::before {
+  content: "\f4db";
+}
+
+.track__body ul li:nth-child(4)::before {
+  content: "\f0d1";
+}
+
+.track__body ul li:nth-child(5)::before {
+  content: "\f581";
+}
+
+/* status completed */
+.track__body ul li.status__completed {
+  color: green !important;
+}
+
+.track__body ul li.status__completed::after {
+  background: green;
+}
+
+.track__body ul li.status__completed span::after {
+  background: green;
+}
+
+/* current status */
+.track__body ul li.current__status {
+  color: orangered;
+}
+
+.track__body ul li.current__status span::after {
+  background: orangered;
+}
+
+.track__body ul li small {
+  float: right;
+  color: black;
+  background: white;
+  border-radius: 20px;
+  padding: 2px 10px;
+}

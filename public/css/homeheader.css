@@ -1,0 +1,46 @@
+/* header section styles */
+.header {
+  clip-path: polygon(100% 0, 100% 100%, 50% 90%, 0 100%, 0 0);
+  width: 100vw;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+    url("../Images/headerPic.jpg") center/cover no-repeat fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__items {
+  position: absolute;
+  background-attachment: fixed;
+}
+
+.header__items h1 {
+  color: white;
+  border-bottom: 2px solid grey;
+  margin-bottom: 10px;
+}
+
+.header__items h3 {
+  color: white;
+  animation: sliding 5s linear alternate infinite;
+  margin-bottom: 30px;
+}
+
+.header__items a {
+  text-decoration: none;
+  animation: buttonbip 8s ease-in-out alternate infinite;
+  color: orange;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 20px;
+  padding: 2px 20px;
+  transition: 0.5s;
+}
+
+.header__iteems__a:hover {
+  color: white;
+  transform: translateY(1%);
+  background: linear-gradient(transparent, orange);
+}
+
+/* end of header section */
